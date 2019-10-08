@@ -3,7 +3,7 @@ package xmldom_test
 import (
 	"fmt"
 
-	"github.com/subchen/go-xmldom"
+	"github.com/stmath/go-xmldom"
 )
 
 const (
