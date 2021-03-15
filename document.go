@@ -20,9 +20,36 @@ func NewDocument(name string) *Document {
 }
 
 type Document struct {
-	ProcInst   string
-	Directives []string
-	Root       *Node
+	ProcInst      string
+	Directives    []string
+	NamespaceList []*Namespace
+	Root          *Node
+}
+
+func (d *Document) getNamespaceByURI(uri string) *Namespace {
+	if uri == "" {
+		return nil
+	}
+	if d.NamespaceList != nil {
+		for _, ns := range d.NamespaceList {
+			if ns.URI == uri {
+				if ns.IsDefault() {
+					return nil
+				} else {
+					return ns
+				}
+			}
+		}
+	}
+
+	// create a new namespace
+	ns := &Namespace{
+		Name: uri,
+		URI:  uri,
+	}
+	d.NamespaceList = append(d.NamespaceList, ns)
+
+	return ns
 }
 
 func (d *Document) XML() string {
