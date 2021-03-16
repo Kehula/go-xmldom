@@ -1,3 +1,3 @@
-package: github.com/stmath/go-xmldom
+package: github.com/kehula/go-xmldom
 import:
 - package: github.com/antchfx/xpath
