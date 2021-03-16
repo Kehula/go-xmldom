@@ -33,11 +33,7 @@ func (d *Document) getNamespaceByURI(uri string) *Namespace {
 	if d.NamespaceList != nil {
 		for _, ns := range d.NamespaceList {
 			if ns.URI == uri {
-				if ns.IsDefault() {
-					return nil
-				} else {
-					return ns
-				}
+				return ns
 			}
 		}
 	}

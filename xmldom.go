@@ -70,6 +70,7 @@ func Parse(r io.Reader) (*Document, error) {
 					})
 				}
 			}
+			el.NS = doc.getNamespaceByURI(token.Name.Space)
 			if e != nil {
 				e.Children = append(e.Children, el)
 			}
